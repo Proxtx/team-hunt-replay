@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "canvas": "^2.11.2",
+    "staticmaps": "^1.12.0"
+  },
+  "name": "team-hunt-replay",
+  "description": "",
+  "version": "1.0.0",
+  "main": "main.js",
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "test": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Proxtx/team-hunt-replay.git"
+  },
+  "author": "Proxtx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Proxtx/team-hunt-replay/issues"
+  },
+  "homepage": "https://github.com/Proxtx/team-hunt-replay#readme"
+}

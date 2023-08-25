@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@proxtx/config": "^1.0.2",
     "canvas": "^2.11.2",
     "staticmaps": "^1.12.0"
   },
@@ -8,7 +9,6 @@
   "version": "1.0.0",
   "main": "main.js",
   "type": "module",
-  "devDependencies": {},
   "scripts": {
     "test": "nodemon ."
   },

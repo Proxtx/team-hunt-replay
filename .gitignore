@@ -131,3 +131,5 @@ dist
 
 history/*
 config.json
+output/*
+output.mp4

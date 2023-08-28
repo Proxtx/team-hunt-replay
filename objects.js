@@ -62,7 +62,7 @@ const readObjects = (gameState, time) => {
   });
 
   for (let location of availableLocations) {
-    obj["location_" + location.name] = new Object(
+    obj["location_" + location.name] = new GameObject(
       location.location.split(" ").map((v) => Number(v)),
       "location"
     );
@@ -74,7 +74,7 @@ const readObjects = (gameState, time) => {
   );*/
 
   for (let fakeLocation in gameState.runnerInformation.pendingFakeLocations) {
-    obj["fakeLocation" + fakeLocation] = new Object(
+    obj["fakeLocation" + fakeLocation] = new GameObject(
       gameState.runnerInformation.pendingFakeLocations[fakeLocation],
       "fakeLocation"
     );
@@ -98,7 +98,7 @@ const readObjects = (gameState, time) => {
   return obj;
 };
 
-class Object {
+export class GameObject {
   constructor(location, icon, size = 1) {
     this.location = location;
     this.icon = "lib/" + icon + ".svg";

@@ -8,15 +8,16 @@ export class Map {
     };
   }
 
-  applyObjects(objects) {
+  applyObjects(objects, clear = true) {
     objects = JSON.parse(JSON.stringify(objects));
 
-    this.map = new StaticMaps({
-      width: this.options.width,
-      height: this.options.height,
-      tileUrl: this.options.tileUrl,
-      tileSize: this.options.tileSize,
-    });
+    if (clear)
+      this.map = new StaticMaps({
+        width: this.options.width,
+        height: this.options.height,
+        tileUrl: this.options.tileUrl,
+        tileSize: this.options.tileSize,
+      });
 
     for (let objectName in objects) {
       let object = objects[objectName];

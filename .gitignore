@@ -134,3 +134,4 @@ config.json
 output/*
 output.mp4
 output_old/*
+output_temp/*

@@ -68,10 +68,10 @@ const readObjects = (gameState, time) => {
     );
   }
 
-  obj.locatorLocation = new Object(
+  /*obj.locatorLocation = new Object(
     gameState.runnerInformation.locatorLocation.map((v) => Number(v)),
     "locatorLocation"
-  );
+  );*/
 
   for (let fakeLocation in gameState.runnerInformation.pendingFakeLocations) {
     obj["fakeLocation" + fakeLocation] = new Object(
@@ -80,7 +80,7 @@ const readObjects = (gameState, time) => {
     );
   }
 
-  for (let team in gameState.teams) {
+  /*for (let team in gameState.teams) {
     for (let member of gameState.teams[team].members) {
       if (
         gameState.users[member] &&
@@ -93,7 +93,7 @@ const readObjects = (gameState, time) => {
         );
       }
     }
-  }
+  }*/
 
   return obj;
 };

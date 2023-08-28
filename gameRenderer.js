@@ -4,6 +4,8 @@ import config from "@proxtx/config";
 import { Objects } from "./objects.js";
 import { generateVideo } from "./video.js";
 
+const outputFiles = await files.getOutputFiles();
+
 export const renderGame = async () => {
   let states = await files.getFiles();
 
@@ -46,10 +48,13 @@ const renderState = async (
   //console.log(objects.getIntermediateFrames());
 
   for (let i = 0; i < objects.getIntermediateFrames(); i++) {
+    if (outputFiles.includes(startFrame + 1 + ".png")) continue;
     map.applyObjects(await objects.generateAnimatedObjects(i));
     console.log(startFrame + i);
     await map.save(startFrame + i);
   }
+
+  console.log(currentStateFile);
 
   return objects.getIntermediateFrames() + startFrame;
 };

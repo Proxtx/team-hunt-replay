@@ -19,7 +19,21 @@ export class Map {
         tileSize: this.options.tileSize,
       });
 
+    if (objects.locatorLocation) {
+      this.map.addMarker({
+        img: objects.locatorLocation.icon,
+        width: 50,
+        height: 50,
+        /*drawHeight: 20,
+        drawWidth: 20,*/
+        coord: objects.locatorLocation.location.reverse(),
+        offsetY: 25,
+      });
+    }
+
     for (let objectName in objects) {
+      if (objectName == "locatorLocation") continue;
+
       let object = objects[objectName];
       this.map.addMarker({
         img: object.icon,

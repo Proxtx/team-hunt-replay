@@ -29,12 +29,10 @@ export const renderGame = async () => {
       config.timeScale
   );*/
 
-  let frame = 0;
-
   for (let stateIndex in states) {
     let index = Number(stateIndex);
     if (!states[index + 1]) break;
-    frame = await renderState(index, index + 1, map, frame, entities);
+    await renderState(index, index + 1, map, entities);
   }
 
   //await generateVideo();
@@ -44,20 +42,27 @@ const renderState = async (
   currentStateFileIndex,
   nextStateFileIndex,
   map,
-  startFrame,
   entities
 ) => {
+  let firstFrameTime = Number(states[0].split(".")[0]);
+
+  let startTime = Number(states[currentStateFileIndex].split(".")[0]);
+  let startFrame = Math.round((startTime - firstFrameTime) / config.timeScale);
+
+  let endTime = Number(states[nextStateFileIndex].split(".")[0]);
+  let endFrame = Math.round((endTime - firstFrameTime) / config.timeScale);
+
   let currentStateFile = states[currentStateFileIndex];
   let nextStateFile = states[nextStateFileIndex];
+
+  console.log(currentStateFile, endFrame - startFrame);
 
   let objects = new Objects(currentStateFile, nextStateFile, config.timeScale);
   await objects.init();
 
   await entities.readState(currentStateFileIndex);
 
-  console.log(currentStateFile);
-
-  for (let i = 0; i < objects.getIntermediateFrames(); i++) {
+  for (let i = 0; startFrame + i < endFrame; i++) {
     console.log(startFrame + i);
     if (outputFiles.includes(startFrame + i + ".png")) continue;
     map.applyObjects(await objects.generateAnimatedObjects(i));
@@ -69,3 +74,4 @@ const renderState = async (
 };
 
 //relaunch at 2685
+//2686

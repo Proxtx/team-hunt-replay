@@ -45,7 +45,7 @@ export class Entities {
   }
 }
 
-const readEntities = (gameState, time) => {
+const readEntities = (gameState) => {
   let obj = {};
 
   if (gameState.runnerInformation.locatorLocation)
@@ -81,7 +81,9 @@ export class Entity {
     this.initEntityLocation = readEntity(this.initGameState, this.entity);
     this.initTime = Number(this.states[this.fileIndex].split(".")[0]);
     this.firstFrameTime = Number(this.states[0].split(".")[0]);
-    this.initFrame = (this.initTime - this.firstFrameTime) / this.timeScale;
+    this.initFrame = Math.round(
+      (this.initTime - this.firstFrameTime) / this.timeScale
+    );
 
     await this.findEndState();
   }
@@ -113,7 +115,9 @@ export class Entity {
       this.entity
     );
     this.endTime = Number(this.states[this.endStateIndex].split(".")[0]);
-    this.endFrame = (this.endTime - this.firstFrameTime) / this.timeScale;
+    this.endFrame = Math.round(
+      (this.endTime - this.firstFrameTime) / this.timeScale
+    );
     this.endState = this.states[this.endStateIndex];
   }
 
@@ -123,8 +127,7 @@ export class Entity {
       this.initGameState.users[this.entity.user].locationUpdate &&
       this.initTime -
         this.initGameState.users[this.entity.user].locationUpdate >
-        1000 * 60 * 3 &&
-      true
+        1000 * 60 * 3
     ) {
       return null;
     }

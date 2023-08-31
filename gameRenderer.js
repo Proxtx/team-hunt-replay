@@ -4,8 +4,11 @@ import config from "@proxtx/config";
 import { Objects } from "./objects.js";
 import { generateVideo } from "./video.js";
 import { Entities } from "./entity.js";
+import { UI } from "./ui.js";
 
 const outputFiles = await files.getOutputFiles();
+
+//const ui = new UI();
 
 let states = await files.getFiles();
 
@@ -28,6 +31,9 @@ export const renderGame = async () => {
       Number(states[0].split(".")[0])) /
       config.timeScale
   );*/
+
+  /*ui.render(await files.readFile(states[500]));
+  await ui.save();*/
 
   for (let stateIndex in states) {
     let index = Number(stateIndex);
@@ -75,3 +81,4 @@ const renderState = async (
 
 //relaunch at 2685
 //2686
+//max: 17981

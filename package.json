@@ -1,8 +1,6 @@
 {
   "dependencies": {
     "@proxtx/config": "^1.0.2",
-    "canvas": "^2.11.2",
-    "fluent-ffmpeg": "^2.1.2",
     "staticmaps": "^1.12.0"
   },
   "name": "team-hunt-replay",
